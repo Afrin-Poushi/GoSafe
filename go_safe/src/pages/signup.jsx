@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
+import { getDatabase, ref, set } from "firebase/database";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBCardImage, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBInput, MDBIcon } from 'mdb-react-ui-kit';
@@ -30,7 +31,22 @@ function SignUp() {
       RegistrationInformation.password
     )
       .then(() => {
+        var user = auth.currentUser;
+        console.log(user);
+        var uid;
+        if (user != null) {
+          uid = user.uid;
+        }
+        set(ref(db, 'users/' + uid),{
+          userUid: uid,
+          userName: RegistrationInformation.name,
+          userEmail: RegistrationInformation.email,
+          userPassword: RegistrationInformation.password,
+          dob: RegistrationInformation.dob,
+        });
+        
         navigate("/logout");
+
       })
       .catch((err) => alert(err.message));
   };
