@@ -100,7 +100,7 @@ function SignUp() {
                 }/>
               </div>
 
-              <div className="d-flex flex-row align-items-center mb-4">
+              {/* <div className="d-flex flex-row align-items-center mb-4">
                 <MDBDropdown>
                   <MDBDropdownToggle color='light'>Gender</MDBDropdownToggle>
                   <MDBDropdownMenu >
@@ -109,7 +109,7 @@ function SignUp() {
                     <MDBDropdownItem link childTag='button'>Prefer Not To Say</MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
-              </div>
+              </div> */}
 <br />
               <MDBBtn className='btn btn-warning' size='lg' onClick={handleRegister}>Register</MDBBtn>
               <p className="small fw-bold mt-2 pt-1 mb-2">Already have an account?
