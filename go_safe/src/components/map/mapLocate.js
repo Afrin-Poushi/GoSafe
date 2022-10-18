@@ -7,7 +7,6 @@ import "./mapStyle.css";
 
 import "leaflet/dist/leaflet.css";
 import LocateControl from "./locate";
-import { RedMarker, BlueMarker } from "./MarkerColors";
 import { getDatabase, ref, onValue, child, set } from "firebase/database";
 import { auth, db } from "../../firebase";
 import $ from "jquery";
