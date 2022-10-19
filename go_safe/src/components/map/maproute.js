@@ -9,6 +9,8 @@ require("leaflet-routing-machine");
 
 var lang;
 var lat;
+var lang1;
+var lat1;
 
 const style = {
   width: "100%",
@@ -42,7 +44,7 @@ class Map extends React.Component {
     super(props);
     this.Form = this.Form.bind(this);
     this.state = {a: false}
-    console.log(lang, lat)
+    
   }
   componentDidUpdate(prevProps) {
     console.log("in")
@@ -52,7 +54,9 @@ class Map extends React.Component {
       
       this.setState(this.lang)
       this.setState(this.lat)
-      console.log(lang, lat)
+      this.setState(this.lang1)
+      this.setState(this.lat1)
+      console.log(lang, lat, lang1, lat1)
 
       var routeControl = L.Routing.control({
       
@@ -79,7 +83,8 @@ class Map extends React.Component {
        // console.log(lang, lat)
        
       var newLatLngA = new L.LatLng(lang, lat, "taskA");
-       var newLatLngB = new L.LatLng(23.90299703073952, 90.40666944380054 , "taskB");
+      console.log(newLatLngA);
+       var newLatLngB = new L.LatLng(lang1, lat1 , "taskB");
           console.log(newLatLngB);
       // var newLatLngC = new L.LatLng(23.9469787, 90.3774195, "taskc");
       // var newLatLngD = new L.LatLng(23.905446661730625, 90.39890486065245
@@ -172,12 +177,14 @@ class Map extends React.Component {
       console.log(inputs);
       lang = inputs.langitude;
       lat = inputs.latitude;
+      lang1 = inputs.langitude1;
+      lat1 = inputs.latitude1;
       console.log(lat, lang)
       this.setState({a: !this.state.a})
     }
     return (
       <form onSubmit={handleSubmit}>
-        <label>Enter langitude
+        <label>Enter source langitude
         <input 
           type="number" 
           name="langitude" 
@@ -186,12 +193,31 @@ class Map extends React.Component {
           id = "langitude"
         />
         </label>
-        <label>Enter latitude
+        <label>Enter source latitude
           <input 
             id = "latitude"
             type="number" 
             name="latitude" 
             value={inputs.latitude || ""} 
+            onChange={handleChange}
+            
+          />
+          </label>
+          <label>Enter destination langitude
+        <input 
+          type="number" 
+          name="langitude1" 
+          value={inputs.langitude1 || ""} 
+          onChange={handleChange}
+          id = "langitude1"
+        />
+        </label>
+        <label>Enter destination latitude
+          <input 
+            id = "latitude1"
+            type="number" 
+            name="latitude1" 
+            value={inputs.latitude1 || ""} 
             onChange={handleChange}
             
           />
