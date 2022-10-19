@@ -11,6 +11,7 @@ import { getDatabase, ref, onValue, child, set } from "firebase/database";
 import { auth, db } from "../../firebase";
 import $ from "jquery";
 import Papa from "papaparse";
+import pointsJson from "./points.json";
 
 // import marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -63,6 +64,19 @@ class MapComp extends Component {
         liveLocation: ev.latlng,
       });
     });
+
+    const pointsGeoJson = new L.GeoJSON(pointsJson, {
+      onEachFeature: (feature = {}, layer) => {
+        const { properties = {} } = feature;
+        const { level } = properties;
+
+        if (!level) return;
+
+        layer.bindPopup(`Safety level:<b> ${level}</b>`);
+      },
+    });
+
+    pointsGeoJson.addTo(map);
 
     // const markers = [
     //   {
