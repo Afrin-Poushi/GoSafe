@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from "./firebase.js";
 import { useNavigate } from 'react-router-dom';
-import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox, MDBCard } from 'mdb-react-ui-kit';
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -25,13 +25,15 @@ function Login() {
     setPassword(e.target.value);
   }
   const handleLogIn = () => {
-    signInWithEmailAndPassword(auth, email, password).then(()=>{
-navigate("/logout");
+    signInWithEmailAndPassword(auth, email, password).then(() => {
+      navigate("/logout");
     }).catch((err) =>
       alert(err.message));
   }
 
   return (
+    <div><p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">GoSafe</p>
+    <MDBCard>
     <MDBContainer fluid className="p-3 my-5 h-custom">
 
       <MDBRow>
@@ -44,24 +46,8 @@ navigate("/logout");
 
           <div className="d-flex flex-row align-items-center justify-content-center">
 
-            <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+            <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
 
-            <MDBBtn floating size='md' tag='a' className='me-2'>
-              <MDBIcon fab icon='facebook-f' />
-            </MDBBtn>
-
-            <MDBBtn floating size='md' tag='a' className='me-2'>
-              <MDBIcon fab icon='twitter' />
-            </MDBBtn>
-
-            <MDBBtn floating size='md' tag='a' className='me-2'>
-              <MDBIcon fab icon='linkedin-in' />
-            </MDBBtn>
-
-          </div>
-
-          <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0">Or</p>
           </div>
 
           <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLgEmail' type='email' size="lg" onChange={handleEmailChange} value={email} />
@@ -104,6 +90,8 @@ navigate("/logout");
       </div>
 
     </MDBContainer>
+    </MDBCard>
+    </div>
   );
 }
 

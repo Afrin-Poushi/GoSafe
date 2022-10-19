@@ -25,8 +25,8 @@ const MainSection = () => {
                Here is where your safe trip begins
                 </MainP>
                 <MainBtnWrapper>
-                    <MyButton2 to='/signup' onMouseEnter={onHover} onMouseLeave={onHover}  >
-                        Go to Map 
+                    <MyButton2 to='/map' onMouseEnter={onHover} onMouseLeave={onHover}  >
+                        Open Map 
                          {/* {(hover ? <ArrowForward /> : ArrowRight />)}; */}
                     </MyButton2>
                 </MainBtnWrapper>
