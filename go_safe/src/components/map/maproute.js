@@ -45,11 +45,50 @@ class Map extends React.Component {
     console.log(lang, lat)
   }
   componentDidUpdate(prevProps) {
+    console.log("in")
 
-    if (this.props.Form !== prevProps.Form) {
-      this.fetchData(this.props.Form);
+    
+      // this.fetchData(this.props.Form);
+      
+      this.setState(this.lang)
+      this.setState(this.lat)
       console.log(lang, lat)
-    }
+
+      var routeControl = L.Routing.control({
+      
+        show: true,
+        fitSelectedRoutes: true,
+        plan: false,
+        lineOptions: {
+          styles: [
+            {
+              color: "blue",
+              opacity: "0.7",
+              weight: 6
+            }
+          ]
+        }
+      })
+        .addTo(this.map)
+        .getPlan();
+  
+        console.log("here");
+  
+        
+  
+       // console.log(lang, lat)
+       
+      var newLatLngA = new L.LatLng(lang, lat, "taskA");
+       var newLatLngB = new L.LatLng(23.90299703073952, 90.40666944380054 , "taskB");
+          console.log(newLatLngB);
+      // var newLatLngC = new L.LatLng(23.9469787, 90.3774195, "taskc");
+      // var newLatLngD = new L.LatLng(23.905446661730625, 90.39890486065245
+      //     , "taskc");
+  
+      //routeControl.setWaypoints([newLatLngA, newLatLngB, newLatLngC, newLatLngD]);
+      
+      routeControl.setWaypoints([newLatLngA, newLatLngB]);
+    
   }
   componentDidMount() {
     
@@ -82,40 +121,40 @@ class Map extends React.Component {
 
     L.Marker.prototype.options.icon = myIcon
 
-    var routeControl = L.Routing.control({
+    // var routeControl = L.Routing.control({
       
-      show: true,
-      fitSelectedRoutes: true,
-      plan: false,
-      lineOptions: {
-        styles: [
-          {
-            color: "blue",
-            opacity: "0.7",
-            weight: 6
-          }
-        ]
-      }
-    })
-      .addTo(this.map)
-      .getPlan();
+    //   show: true,
+    //   fitSelectedRoutes: true,
+    //   plan: false,
+    //   lineOptions: {
+    //     styles: [
+    //       {
+    //         color: "blue",
+    //         opacity: "0.7",
+    //         weight: 6
+    //       }
+    //     ]
+    //   }
+    // })
+    //   .addTo(this.map)
+    //   .getPlan();
 
-      console.log("here");
+    //   console.log("here");
 
       
 
-      console.log(lang, lat)
+    //  // console.log(lang, lat)
      
-    var newLatLngA = new L.LatLng(23.9469787, 90.3774195, "taskA");
-     var newLatLngB = new L.LatLng(23.90299703073952, 90.40666944380054 , "taskB");
-        console.log(newLatLngB);
-    // var newLatLngC = new L.LatLng(23.9469787, 90.3774195, "taskc");
-    // var newLatLngD = new L.LatLng(23.905446661730625, 90.39890486065245
-    //     , "taskc");
+    // var newLatLngA = new L.LatLng(23.9469787, 90.3774195, "taskA");
+    //  var newLatLngB = new L.LatLng(23.90299703073952, 90.40666944380054 , "taskB");
+    //     console.log(newLatLngB);
+    // // var newLatLngC = new L.LatLng(23.9469787, 90.3774195, "taskc");
+    // // var newLatLngD = new L.LatLng(23.905446661730625, 90.39890486065245
+    // //     , "taskc");
 
-    //routeControl.setWaypoints([newLatLngA, newLatLngB, newLatLngC, newLatLngD]);
+    // //routeControl.setWaypoints([newLatLngA, newLatLngB, newLatLngC, newLatLngD]);
     
-    routeControl.setWaypoints([newLatLngA, newLatLngB]);
+    // routeControl.setWaypoints([newLatLngA, newLatLngB]);
   }
 
 
