@@ -9,8 +9,8 @@ import "leaflet/dist/leaflet.css";
 import LocateControl from "./locate";
 import { getDatabase, ref, onValue, child, set } from "firebase/database";
 import { auth, db } from "../../firebase";
-import $ from "jquery";
-import Papa from "papaparse";
+// import $ from "jquery";
+// import Papa from "papaparse";
 import pointsJson from "./points.json";
 
 // import marker icons
@@ -72,7 +72,7 @@ class MapComp extends Component {
 
         if (!level) return;
 
-        layer.bindPopup(`Safety level:<b> ${level}</b>`);
+        layer.bindPopup(`Severity level:<b> ${level}</b>`);
       },
     });
 
@@ -181,10 +181,6 @@ class MapComp extends Component {
     this.setState({ circlePosition });
   };
 
-  // handleCsv() {
-  //   navigate("/getCsv.html");
-  // }
-
   sayHello() {
     let uid = auth.currentUser.uid.toString();
     console.log(uid);
@@ -215,19 +211,17 @@ class MapComp extends Component {
     const locateOptions = {
       showPopup: true,
       position: "topleft",
+      flyTo: true,
       strings: {
         title: "Your Location",
         popup: "You are Here",
       },
       drawCircle: false,
-      onActivate: () => {}, // callback before engine starts retrieving locations
+      //onActivate: () => {}, // callback before engine starts retrieving locations
     };
 
     return (
       <div id="map">
-        <div>
-          <button> Share Location</button>
-        </div>
         <Map
           style={{ height: "100vh" }}
           center={center}
@@ -242,7 +236,7 @@ class MapComp extends Component {
           <LocateControl
             options={locateOptions}
             on={myPosition ? false : true}
-          />
+          ></LocateControl>
 
           <div className="pointer" />
 
@@ -267,8 +261,6 @@ class MapComp extends Component {
             <Popup>{m.name}</Popup>
           </Marker>
         ))} */}
-
-          <Marker position={[23.685, 90.3563]}></Marker>
         </Map>
       </div>
     );
