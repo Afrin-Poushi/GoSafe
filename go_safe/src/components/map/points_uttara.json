@@ -4,26 +4,26 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "3"
+                "level": "3-0"
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    23.874667,
-                    90.399779
+                    90.399779,
+                    23.874667
                 ]
             }
         },
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "2"
+                "level": "2-1"
             },
             "geometry": {
                 "type": "Point",
@@ -36,10 +36,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "2"
+                "level": "2-2"
             },
             "geometry": {
                 "type": "Point",
@@ -52,10 +52,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "3"
+                "level": "3-3"
             },
             "geometry": {
                 "type": "Point",
@@ -68,10 +68,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "2"
+                "level": "2-4"
             },
             "geometry": {
                 "type": "Point",
@@ -84,10 +84,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "3"
+                "level": "3-5"
             },
             "geometry": {
                 "type": "Point",
@@ -100,10 +100,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "2"
+                "level": "2-6"
             },
             "geometry": {
                 "type": "Point",
@@ -116,10 +116,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "3"
+                "level": "3-7"
             },
             "geometry": {
                 "type": "Point",
@@ -132,10 +132,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "2"
+                "level": "2-8"
             },
             "geometry": {
                 "type": "Point",
@@ -148,10 +148,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "3"
+                "level": "3-9"
             },
             "geometry": {
                 "type": "Point",
@@ -164,10 +164,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "3"
+                "level": "3-10"
             },
             "geometry": {
                 "type": "Point",
@@ -180,10 +180,10 @@
         {
             "type": "Feature",
             "properties": {
-                "marker-color": "#2a93ee",
+                "marker-color": "#ff0000",
                 "marker-size": "medium",
                 "marker-symbol": "",
-                "level": "3"
+                "level": "3-11"
             },
             "geometry": {
                 "type": "Point",
