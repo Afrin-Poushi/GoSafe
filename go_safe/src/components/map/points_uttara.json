@@ -192,6 +192,147 @@
                     23.874195013857957
                 ]
             }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-12"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90.39649754762651,23.875300153004673
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-13"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90.39600402116777,
+                    23.874895458780923
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-14"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                     90.39647608995439, 
+                     23.87606784220719
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-15"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90.39616763591768,
+                    23.875685224515625
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-16"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90.3964948654175,
+                    23.87564107624766
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-17"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90.39503306150439,
+                    23.873833437013563
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-18"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90.39319038391115,23.87503158334285
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-19"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                     90.39266332983973,
+                     23.8753853838996
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ff0000",
+                "marker-size": "medium",
+                "marker-symbol": "",
+                "level": "3-20"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90.39150461554527,23.875355951654463
+                ]
+            }
         }
     ]
 }
