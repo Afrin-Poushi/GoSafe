@@ -19,9 +19,9 @@ function Feedback_all() {
             <h1>How was your trip?</h1>
             <div>
                 <MDBContainer>
-                    <MDBBtn onClick={changeToThankPage}>Very Good</MDBBtn>
-                    <MDBBtn onClick={changeToThankPage}>Okay</MDBBtn>
-                    <MDBBtn onClick={changeToFeedback}>Bad</MDBBtn>
+                    <MDBBtn className="d-block m-auto w-100" onClick={changeToThankPage}>Very Good</MDBBtn><br></br>
+                    <MDBBtn className="d-block m-auto w-100" onClick={changeToThankPage}>Okay</MDBBtn><br></br>
+                    <MDBBtn className="d-block m-auto w-100" onClick={changeToFeedback}>Bad</MDBBtn>
                 </MDBContainer>
             </div>
         </div>
