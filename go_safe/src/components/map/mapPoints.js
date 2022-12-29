@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import pointsJson from "./points_uttara.json";
 import axios from "axios";
+import { Route } from "react-router-dom";
 
 require("leaflet-routing-machine");
 
@@ -20,7 +21,8 @@ var lang;
 var lat;
 var lang1;
 var lat1;
-
+var latArr = [];
+var i = 1;
 const style = {
   width: "100%",
   height: "100vh",
@@ -42,6 +44,13 @@ var osm = L.tileLayer(isRetina ? retinaUrl : baseUrl, {
   maxZoom: 20,
   id: "osm-bright",
 });
+
+function createButton(label, container) {
+  var btn = L.DomUtil.create('button', '', container);
+  btn.setAttribute('type', 'button');
+  btn.innerHTML = label;
+  return btn;
+}
 
 class Map extends React.Component {
   constructor(props) {
@@ -100,26 +109,9 @@ class Map extends React.Component {
     //     , "taskc");
 
     //routeControl.setWaypoints([newLatLngA, newLatLngB]);
-    var latArr = [];
-    var i = 1;
+    
     latArr.push(newLatLngA);
-    const pointsGeoJson = new L.GeoJSON(pointsJson, {
-      onEachFeature: (feature = {}, layer) => {
-        const { properties = {} } = feature;
-        const { geometry = {} } = feature;
-
-        const { level } = properties;
-        const { coordinates } = geometry;
-        // console.log(geometry);
-        // console.log(coordinates[0]);
-
-        latArr.push(new L.LatLng(coordinates[1], coordinates[0], "taskU"));
-
-        if (!level) return;
-
-        layer.bindPopup(`Severity level:<b> ${level}</b>`);
-      },
-    });
+   
     var len = latArr.length;
     latArr.push(newLatLngB);
     console.log(latArr);
@@ -133,7 +125,7 @@ class Map extends React.Component {
       allowUTurn: true,
     })
       .addTo(this.map)
-      .spliceWaypoints(1, 12);
+      .spliceWaypoints(0, 12);
     // L.Routing.control({
     //   waypoints : [newLatLngA, newLatLngB],
     //   showAlternatives: true,
@@ -185,15 +177,15 @@ class Map extends React.Component {
     //   ]
     // }).addTo(this.map);
 
-    pointsGeoJson.addTo(this.map);
+   
   }
   componentDidMount() {
     if (this.map) {
-      this.map.remove();
+      return;
     }
     //const map = this.map;
 
-    // create map
+    //create map
     this.map = L.map("map", {
       center: [23.9469787, 90.3774195],
       zoom: 12,
@@ -248,6 +240,26 @@ class Map extends React.Component {
     //    showAlternatives: true
     //   //show: false
     // }).addTo(this.map);
+
+     const pointsGeoJson = new L.GeoJSON(pointsJson, {
+      onEachFeature: (feature = {}, layer) => {
+        const { properties = {} } = feature;
+        const { geometry = {} } = feature;
+
+        const { level } = properties;
+        const { coordinates } = geometry;
+        const {markercolor} = properties;
+        // console.log(geometry);
+        // console.log(coordinates[0]);
+
+        latArr.push(new L.LatLng(coordinates[1], coordinates[0], "taskU"));
+
+        if (!level) return;
+
+        layer.bindPopup(`Severity level:<b> ${level}</b>`);
+      },
+    }); 
+    pointsGeoJson.addTo(this.map);
 
     L.Marker.prototype.options.icon = myIcon;
 
@@ -488,7 +500,7 @@ class Map extends React.Component {
           let lat = data.geometry.coordinates[1];
           console.log(lng, lat);
           var marker = L.marker([lat, lng], markerOptions);
-          marker.bindPopup(`This is the address ${lat}, ${lng}`).openPopup();
+          marker.bindPopup(`${lat}, ${lng}`).openPopup();
 
           marker.addTo(this.map.flyTo(marker.getLatLng(), 15));
         }
@@ -527,6 +539,8 @@ class Map extends React.Component {
       var lng = e.latlng.lng;
       console.log(lat, lng);
 
+      
+
       var config = {
         method: "get",
         url: `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=9e8599c1e951425199980bc34c4c925e`,
@@ -543,10 +557,31 @@ class Map extends React.Component {
           // Create a new marker at the click point
           var marker2 = L.marker([lat, lng], markerOptions).addTo(leafletMap);
           // console.log(marker2);
+          var container = L.DomUtil.create('div');
+        var startBtn = createButton('Start from this location', container);
+        var destBtn = createButton('Go to this location', container);
+        container.appendChild(startBtn);
+        //container.setAttribute("id", "butt");
+        const pop = L.popup()
+        .setContent(container)
+        .setLatLng(e.latlng)
+        .openPopup();
+        const popAddress = L.popup().setLatLng([lat, lng]).setContent(`The address ${address}, ${address2} <br> ${lat}, ${lng}`).openOn(leafletMap);
 
-          marker2.bindPopup(`The address ${address}, ${address2}`).openPopup();
+          marker2.bindPopup(popAddress);
+          popAddress.setContent(`${popAddress.getContent()} <br> ${container.outerHTML}`);
 
-          // marker2.addTo(this.flyTo(marker2.getLatLng(), 13));
+          L.DomEvent.on(startBtn, 'click', function() {
+            Route.control.spliceWaypoints(0, 1, e.latlng);
+            leafletMap.closePopup();
+        });
+        L.DomEvent.on(destBtn, 'click', function() {
+          Route.control.spliceWaypoints(Route.control.getWaypoints().length - 1, 1, e.latlng);
+          leafletMap.closePopup();
+      });
+
+
+         
         })
         .catch(function (error) {
           console.log(error);
