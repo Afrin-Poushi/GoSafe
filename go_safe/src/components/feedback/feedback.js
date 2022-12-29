@@ -16,13 +16,24 @@ export default function Feedback() {
     setDarkMode(value);
     bd.helper.setTheme(value ? "mui-dark" : "mui-light");
   }
-//   const changeToThankPage = () =>{
-//     navigate("/thanks");
-// }
+  //   const changeToThankPage = () =>{
+  //     navigate\("/thanks");
+  // }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  
+    const feedback = {
+      place: event.target.place.value,
+      severity: event.target.severity.value,
+      message: event.target.message.value
+    };
+  
+    firebase.database().ref('feedback').push(feedback);
+  };
 
   return (
     <>
-    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">GoSafe</p>
+      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">GoSafe</p>
       <bd.Paper className="p-3 my-3 mx-auto" style={{ maxWidth: 600 }}>
         <Form autoComplete="off" className="">
           <div className="text-primary text-center mb-4">
@@ -53,32 +64,28 @@ export default function Feedback() {
             />
             <bd.icons.PersonOutline />
           </FloatingLabel> */}
-<Row>
+          <Row>
             <Col md>
-            <FloatingLabel label="Where did you face problems?" className="dense mb-3">
-            <Form.Control
-              as="textarea"
-              name="message"
-              placeholder="Separate by comma if you have multiple"
-              style={{ height: 100 }}
-            />
-          </FloatingLabel>
+              <FloatingLabel label="Where did you face problems?" className="dense mb-3">
+                <Form.Control as="textarea" name="place" placeholder="Separate by comma if you have multiple" style={{ height: 100 }}
+                />
+              </FloatingLabel>
             </Col>
 
           </Row>
           <Row>
             <Col md>
-                <FloatingLabel label ="Rate the Severity" className="dense mb-3">
-                    <Form.Select placeholder="Severity">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </Form.Select>
-                </FloatingLabel>
+              <FloatingLabel label="Rate the Severity of the problem" className="dense mb-3">
+                <Form.Select name="severity" placeholder="Severity">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </Form.Select>
+              </FloatingLabel>
             </Col>
-            </Row>
-            
+          </Row>
+
 
           <FloatingLabel label="Message" className="dense mb-3">
             <Form.Control
@@ -89,20 +96,10 @@ export default function Feedback() {
             />
           </FloatingLabel>
 
-          <bd.Button
-            color="primary"
-            size="lg"
-            type="button"
-            className="d-block m-auto w-100"
-          >
+          <bd.Button color="primary" size="lg" type="button" className="d-block m-auto w-100" onClick={handleSubmit()}>
             Give Feedback
           </bd.Button>
-          <bd.Button
-            color="primary"
-            size="lg"
-            type="button"
-            className="d-block m-auto w-100"
-          >
+          <bd.Button color="primary" size="lg" type="button" className="d-block m-auto w-100">
             Go Home
           </bd.Button>
         </Form>
