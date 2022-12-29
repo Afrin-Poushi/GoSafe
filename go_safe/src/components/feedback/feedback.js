@@ -2,6 +2,7 @@ import React, { useState, useNavigate } from "react";
 import { Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import * as bd from "react-basic-design";
 import "./styles.scss";
+import {db} from '../../firebase.js'
 
 export default function Feedback() {
   const [rtl, setRTL] = useState(bd.helper.getRTL());
@@ -28,7 +29,7 @@ export default function Feedback() {
       message: event.target.message.value
     };
   
-    firebase.database().ref('feedback').push(feedback);
+    db.ref('feedback').push(feedback);
   };
 
   return (
